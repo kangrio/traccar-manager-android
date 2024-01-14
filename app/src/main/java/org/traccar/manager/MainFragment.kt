@@ -91,6 +91,10 @@ class MainFragment : WebViewFragment() {
         loadPage()
     }
 
+    override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
+        handler.proceed()
+    }
+
     private fun loadPage() {
         val url = PreferenceManager.getDefaultSharedPreferences(activity)
             .getString(MainActivity.PREFERENCE_URL, null)
